@@ -113,8 +113,7 @@ void RandomFillVector(std::vector<int*>& v, int size)
 count_if - это алгоритмическая функция из STL, которая принимает 3 параметра: итератор на начало, итератор на конец и унарный предикат (функцию, принимающую один параметр и возвращающую тип bool).
 find - это метод класса string, который возвращает позицию символа (строки), переданного в качестве параметра, в исходной строке. Если символ не найден, то метод возвращает string::npos.
 */
-
-void countVowels1()
+void count_If_Find()
 {
 	setlocale(LC_ALL, "rus");
 	auto start = chrono::high_resolution_clock::now();
@@ -138,7 +137,7 @@ void countVowels1()
 }
 
 
-void countVowels2()
+void count_If_For()
 {
 	auto start = chrono::high_resolution_clock::now();
 
@@ -160,7 +159,7 @@ void countVowels2()
 	cout << "Количество гласных: " << count << endl;
 }
 
-void countVowels3()
+void count_For_Find()
 {
 	auto start = chrono::high_resolution_clock::now();
 
@@ -187,7 +186,7 @@ void countVowels3()
 	cout << "Количество гласных: " << count << endl;
 }
 
-void countVowels4()
+void count_For_For()
 {
 	auto start = chrono::high_resolution_clock::now();
 
@@ -249,13 +248,13 @@ int main()
 		cout << "\nЗадание 3" << endl;
 		//Task 3
 		//count_if + find
-		countVowels1();
+		count_If_Find();
 		//count_if + for
-		countVowels2();
+		count_If_For();
 		//for+find
-		countVowels3();
+		count_For_Find();
 		//for+for
-		countVowels4();
+		count_For_For();
 		
 	}
 }
