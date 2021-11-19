@@ -128,7 +128,7 @@ void countVowels1()
 
 	auto finish = chrono::high_resolution_clock::now();
 	auto result = chrono::duration_cast<chrono::milliseconds>(finish - start);
-	cout << "(Count_if + find) took " << result.count() << " миллисекунд.\n";
+	cout << "(Count_if + find) занял " << result.count() << " миллисекунд.\n";
 	cout << "Количество гласных: " << count << endl;
 }
 
@@ -151,7 +151,7 @@ void countVowels2()
 
 	auto finish = chrono::high_resolution_clock::now();
 	auto result = chrono::duration_cast<chrono::milliseconds>(finish - start);
-	cout << "(Count_if + for) took " << result.count() << " миллисекунд.\n";
+	cout << "(Count_if + for) занял " << result.count() << " миллисекунд.\n";
 	cout << "Количество гласных: " << count << endl;
 }
 
@@ -178,7 +178,7 @@ void countVowels3()
 
 	auto finish = chrono::high_resolution_clock::now();
 	auto result = chrono::duration_cast<chrono::milliseconds>(finish - start);
-	cout << "(For + find) took " << result.count() << " миллисекунд.\n";
+	cout << "(For + find) занял " << result.count() << " миллисекунд.\n";
 	cout << "Количество гласных: " << count << endl;
 }
 
@@ -208,7 +208,7 @@ void countVowels4()
 
 	auto finish = chrono::high_resolution_clock::now();
 	auto result = chrono::duration_cast<chrono::milliseconds>(finish - start);
-	cout << "(For + for) took " << result.count() << " миллисекунд.\n";
+	cout << "(For + for) занял " << result.count() << " миллисекунд.\n";
 	cout << "Количество гласных: " << count << endl;
 }
 
