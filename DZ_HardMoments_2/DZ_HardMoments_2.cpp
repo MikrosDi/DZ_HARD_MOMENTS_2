@@ -23,9 +23,9 @@ void Swap(T& ptr1, T& ptr2) noexcept
 {
 	assert(ptr1 != ptr2);
 
-	T temp(std::move(ptr1));
-	ptr1 = std::move(ptr2);
-	ptr2 = std::move(temp);
+	T temp(move(ptr1));
+	ptr1 = move(ptr2);
+	ptr2 = move(temp);
 }
 class Item
 {
@@ -44,7 +44,7 @@ public:
 
 void Item::printValue()
 {
-	std::cout << value << std::endl;
+	cout << value << endl;
 }
 
 
@@ -53,21 +53,21 @@ void Item::printValue()
 и сортирует указатели по значениям, на которые они указывают.
 */
 template <typename T>
-void SortPointers(std::vector<T*>& v)
+void SortPointers(vector<T*>& v)
 {
-	std::sort(v.begin(), v.end(), [](const T* a, const T* b) {return *a < *b; });
+	sort(v.begin(), v.end(), [](const T* a, const T* b) {return *a < *b; });
 }
 
 template <typename T>
-void PrintVector(const std::vector<T*>& v)
+void PrintVector(const vector<T*>& v)
 {
 	auto iter = v.begin();
 	while (iter != v.end())
 	{
-		std::cout << **iter << " ";
+		cout << **iter << " ";
 		++iter;
 	}
-	std::cout << std::endl;
+	cout << endl;
 }
 
 template <typename T>
@@ -85,7 +85,7 @@ void RandomFillVector(std::vector<T*>& v, int size)
 template <>
 void RandomFillVector(std::vector<int*>& v, int size)
 {
-	std::srand(static_cast<uint16_t>(std::time(0)));
+	srand(static_cast<uint16_t>(time(0)));
 	v.resize(size);
 	auto iter = v.begin();
 	while (iter != v.end())
@@ -111,91 +111,92 @@ find - это метод класса string, который возвращае�
 */
 void countVowels1()
 {
-	auto start = std::chrono::high_resolution_clock::now();
+	setlocale(LC_ALL, "rus");
+	auto start = chrono::high_resolution_clock::now();
 
-	std::ifstream file("voina-i-mir.txt");
+	ifstream file("voina-i-mir.txt");
 	if (!file.is_open())
 	{
-		std::cout << "Could not read the file!" << std::endl;
+		cout << "Не удалось прочитать файл!" << endl;
 		return;
 	}
 
-	std::string vowels = "AEIOUYaeiouy";
+    string vowels = "AEIOUYaeiouy";
 
-	size_t count = std::count_if(std::istreambuf_iterator<char>(file), std::istreambuf_iterator<char>(), [=](char x) {return vowels.find(x) != std::string::npos; });
+	size_t count = count_if(std::istreambuf_iterator<char>(file), istreambuf_iterator<char>(), [=](char x) {return vowels.find(x) != string::npos; });
 	file.close();
 
-	auto finish = std::chrono::high_resolution_clock::now();
-	auto result = std::chrono::duration_cast<std::chrono::milliseconds>(finish - start);
-	std::cout << "(Count_if + find) took " << result.count() << " milliseconds.\n";
-	std::cout << "Number of vowels: " << count << std::endl;
+	auto finish = chrono::high_resolution_clock::now();
+	auto result = chrono::duration_cast<chrono::milliseconds>(finish - start);
+	cout << "(Count_if + find) took " << result.count() << " миллисекунд.\n";
+	cout << "Количество гласных: " << count << endl;
 }
 
 
 void countVowels2()
 {
-	auto start = std::chrono::high_resolution_clock::now();
+	auto start = chrono::high_resolution_clock::now();
 
-	std::ifstream file("voina-i-mir.txt");
+	ifstream file("voina-i-mir.txt");
 	if (!file.is_open())
 	{
-		std::cout << "Could not read the file!" << std::endl;
+		cout << "Не удалось прочитать файл!" << endl;
 		return;
 	}
 
-	std::string vowels = "AEIOUYaeiouy";
+	string vowels = "AEIOUYaeiouy";
 
-	size_t count = std::count_if(std::istreambuf_iterator<char>(file), std::istreambuf_iterator<char>(), [=](char x) -> bool {for (auto chr : vowels) { if (chr == x) return true; } return false; });
+	size_t count = count_if(std::istreambuf_iterator<char>(file), istreambuf_iterator<char>(), [=](char x) -> bool {for (auto chr : vowels) { if (chr == x) return true; } return false; });
 	file.close();
 
-	auto finish = std::chrono::high_resolution_clock::now();
-	auto result = std::chrono::duration_cast<std::chrono::milliseconds>(finish - start);
-	std::cout << "(Count_if + for) took " << result.count() << " milliseconds.\n";
-	std::cout << "Number of vowels: " << count << std::endl;
+	auto finish = chrono::high_resolution_clock::now();
+	auto result = chrono::duration_cast<chrono::milliseconds>(finish - start);
+	cout << "(Count_if + for) took " << result.count() << " миллисекунд.\n";
+	cout << "Количество гласных: " << count << endl;
 }
 
 void countVowels3()
 {
-	auto start = std::chrono::high_resolution_clock::now();
+	auto start = chrono::high_resolution_clock::now();
 
-	std::ifstream file("voina-i-mir.txt");
+	ifstream file("voina-i-mir.txt");
 	if (!file.is_open())
 	{
-		std::cout << "Could not read the file!" << std::endl;
+		cout << "Не удалось прочитать файл!" << endl;
 		return;
 	}
 
-	std::string vowels = "AEIOUYaeiouy";
+	string vowels = "AEIOUYaeiouy";
 	size_t count = 0;
 
-	for (auto it = std::istreambuf_iterator<char>(file); it != std::istreambuf_iterator<char>(); ++it)
+	for (auto it = istreambuf_iterator<char>(file); it != istreambuf_iterator<char>(); ++it)
 	{
-		if (vowels.find(*it) != std::string::npos) ++count;
+		if (vowels.find(*it) != string::npos) ++count;
 	}
 
 	file.close();
 
-	auto finish = std::chrono::high_resolution_clock::now();
-	auto result = std::chrono::duration_cast<std::chrono::milliseconds>(finish - start);
-	std::cout << "(For + find) took " << result.count() << " milliseconds.\n";
-	std::cout << "Number of vowels: " << count << std::endl;
+	auto finish = chrono::high_resolution_clock::now();
+	auto result = chrono::duration_cast<chrono::milliseconds>(finish - start);
+	cout << "(For + find) took " << result.count() << " миллисекунд.\n";
+	cout << "Количество гласных: " << count << endl;
 }
 
 void countVowels4()
 {
-	auto start = std::chrono::high_resolution_clock::now();
+	auto start = chrono::high_resolution_clock::now();
 
-	std::ifstream file("voina-i-mir.txt");
+	ifstream file("voina-i-mir.txt");
 	if (!file.is_open())
 	{
-		std::cout << "Could not read the file!" << std::endl;
+		cout << "Не удалось прочитать файл!" << endl;
 		return;
 	}
 
-	std::string vowels = "AEIOUYaeiouy";
+	string vowels = "AEIOUYaeiouy";
 	size_t count = 0;
 
-	for (auto it = std::istreambuf_iterator<char>(file); it != std::istreambuf_iterator<char>(); ++it)
+	for (auto it = istreambuf_iterator<char>(file); it != istreambuf_iterator<char>(); ++it)
 	{
 		for (char chr : vowels)
 		{
@@ -205,19 +206,20 @@ void countVowels4()
 
 	file.close();
 
-	auto finish = std::chrono::high_resolution_clock::now();
-	auto result = std::chrono::duration_cast<std::chrono::milliseconds>(finish - start);
-	std::cout << "(For + for) took " << result.count() << " milliseconds.\n";
-	std::cout << "Number of vowels: " << count << std::endl;
+	auto finish = chrono::high_resolution_clock::now();
+	auto result = chrono::duration_cast<chrono::milliseconds>(finish - start);
+	cout << "(For + for) took " << result.count() << " миллисекунд.\n";
+	cout << "Количество гласных: " << count << endl;
 }
 
 
 int main()
 {
+	setlocale(LC_ALL, "rus");
 	{
-		cout << "Task 1" << endl;
-		std::unique_ptr<Item> ptr1(new Item(7));
-		std::unique_ptr<Item> ptr2(new Item(777));
+		cout << "Задание 1" << endl;
+		unique_ptr<Item> ptr1(new Item(7));
+		unique_ptr<Item> ptr2(new Item(777));
 		ptr1->printValue();
 		ptr2->printValue();
 		swap(ptr1, ptr2);
@@ -227,19 +229,19 @@ int main()
 	}
 
 	{
-		cout << "\nTask 2" << endl;
-		std::cout << "Initial vector:" << std::endl;
-		std::vector<int*> ptrVector;
+		cout << "\nЗадание 2" << endl;
+		cout << "Начальный вектор:" << endl;
+		vector<int*> ptrVector;
 		RandomFillVector(ptrVector, 10);
 		PrintVector(ptrVector);
-		std::cout << "Sorted vector:" << std::endl;
+		cout << "\nОтсортированный вектор:" << endl;
 		SortPointers(ptrVector);
 		PrintVector(ptrVector);
 		
 	}
 
 	{
-		cout << "\nTask 3" << endl;
+		cout << "\nЗадание 3" << endl;
 		//Task 3
 		//count_if + find
 		countVowels1();
