@@ -222,13 +222,15 @@ int main()
 	setlocale(LC_ALL, "rus");
 	{
 		cout << "Задание 1" << endl;
-		unique_ptr<SVP> ptr1(new SVP(7));
-		unique_ptr<SVP> ptr2(new SVP(777));
-		ptr1->PrintV();
-		ptr2->PrintV();
-		swap(ptr1, ptr2);
-		ptr1->PrintV();
-		ptr2->PrintV();
+		unique_ptr<SVP> uk1(new SVP(7));
+		unique_ptr<SVP> uk2(new SVP(777));
+		cout << "До: " << endl;
+		uk1->PrintV();
+		uk2->PrintV();
+		swap(uk1, uk2);
+		cout << "После: " << endl;
+		uk1->PrintV();
+		uk2->PrintV();
 		
 	}
 
@@ -238,7 +240,7 @@ int main()
 		vector<int*> ptrVector;
 		RandomFillVector(ptrVector, 10);
 		PrintVector(ptrVector);
-		cout << "\nОтсортированный вектор:" << endl;
+		cout << "Отсортированный вектор:" << endl;
 		SortPointers(ptrVector);
 		PrintVector(ptrVector);
 		
@@ -246,14 +248,13 @@ int main()
 
 	{
 		cout << "\nЗадание 3" << endl;
-		//Task 3
-		//count_if + find
+		
 		count_If_Find();
-		//count_if + for
+		
 		count_If_For();
-		//for+find
+		
 		count_For_Find();
-		//for+for
+		
 		count_For_For();
 		
 	}
