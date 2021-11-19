@@ -12,46 +12,49 @@
 using namespace std;
 
 
-
 /*Task 1
+* 
 Реализуйте шаблонную функцию Swap, которая принимает два указателя и обменивает местами значения,
 на которые указывают эти указатели (нужно обменивать именно сами указатели,
 переменные должны оставаться в тех же адресах памяти).
 */
-template <typename T>
-void Swap(T& ptr1, T& ptr2) noexcept
-{
-	assert(ptr1 != ptr2);
 
-	T temp(move(ptr1));
-	ptr1 = move(ptr2);
-	ptr2 = move(temp);
+template <typename T>
+void Swap(T& uk1, T& uk2) noexcept
+{
+	assert(uk1 != uk2);
+
+	T temp(move(uk1));
+	uk1 = move(uk2);
+	uk2 = move(temp);
 }
-class Item
+class SVP
 {
 private:
 	int value = 0;
 public:
-	Item(int input)
+	SVP(int input)
 		: value(input)
 	{
 
 	}
 
-	void printValue();
+	void PrintV();
 
 };
 
-void Item::printValue()
+void SVP::PrintV()
 {
 	cout << value << endl;
 }
 
 
 /*Task 2
+* 
 Реализуйте шаблонную функцию SortPointers, которая принимает вектор указателей
 и сортирует указатели по значениям, на которые они указывают.
 */
+
 template <typename T>
 void SortPointers(vector<T*>& v)
 {
@@ -99,6 +102,7 @@ void RandomFillVector(std::vector<int*>& v, int size)
 
 
 /*Task 3
+* 
 Подсчитайте количество гласных букв в книге “Война и мир”. Для подсчета используйте 4 способа:
 ○      count_if и find
 ○      count_if и цикл for
@@ -109,6 +113,7 @@ void RandomFillVector(std::vector<int*>& v, int size)
 count_if - это алгоритмическая функция из STL, которая принимает 3 параметра: итератор на начало, итератор на конец и унарный предикат (функцию, принимающую один параметр и возвращающую тип bool).
 find - это метод класса string, который возвращает позицию символа (строки), переданного в качестве параметра, в исходной строке. Если символ не найден, то метод возвращает string::npos.
 */
+
 void countVowels1()
 {
 	setlocale(LC_ALL, "rus");
@@ -218,13 +223,13 @@ int main()
 	setlocale(LC_ALL, "rus");
 	{
 		cout << "Задание 1" << endl;
-		unique_ptr<Item> ptr1(new Item(7));
-		unique_ptr<Item> ptr2(new Item(777));
-		ptr1->printValue();
-		ptr2->printValue();
+		unique_ptr<SVP> ptr1(new SVP(7));
+		unique_ptr<SVP> ptr2(new SVP(777));
+		ptr1->PrintV();
+		ptr2->PrintV();
 		swap(ptr1, ptr2);
-		ptr1->printValue();
-		ptr2->printValue();
+		ptr1->PrintV();
+		ptr2->PrintV();
 		
 	}
 
