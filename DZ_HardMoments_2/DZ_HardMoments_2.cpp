@@ -207,11 +207,12 @@ int main()
 	    int* one = &first;
 		int second = 25;
 	    int* two = &second;
-		cout << " Значение " << first << "\nУказатель на значение " << *one << endl;
-		cout << " Значение " << second << "\nУказатель на значение " << *two << endl;
+		cout << " Значение " << first << " <-> Указатель на значение " << *one << endl;
+		cout << " Значение " << second << " <-> Указатель на значение " << *two << endl;
 		Swap(&one, &two);
-		cout << " Значение " << first << "\nУказатель на значение " << *one << endl;
-		cout << " Значение " << second << "\nУказатель на значение " << *two << endl;
+		cout << " Сработала функция Swap! " << endl;
+		cout << " Значение " << first << " <-> Указатель на значение " << *one << endl;
+		cout << " Значение " << second << " <-> Указатель на значение " << *two << endl;
 	}
 
 	{
