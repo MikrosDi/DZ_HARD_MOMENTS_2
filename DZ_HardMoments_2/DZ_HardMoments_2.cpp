@@ -19,34 +19,15 @@ using namespace std;
 переменные должны оставаться в тех же адресах памяти).
 */
 
-template <typename T>
-void Swap(T& uk1, T& uk2) noexcept
-{
-	assert(uk1 != uk2);
+    template <typename T>
 
-	T temp(move(uk1));
-	uk1 = move(uk2);
-	uk2 = move(temp);
-}
-class SVP
-{
-private:
-	int value = 0;
-public:
-	SVP(int input)
-		: value(input)
+	void Swap(T** one, T** two)
 	{
-
+		T* pSwap = *one;
+		*one = *two;
+		*two = pSwap;
 	}
 
-	void PrintV();
-
-};
-
-void SVP::PrintV()
-{
-	cout << value << endl;
-}
 
 
 /*Task 2
@@ -222,16 +203,15 @@ int main()
 	setlocale(LC_ALL, "rus");
 	{
 		cout << "Задание 1" << endl;
-		unique_ptr<SVP> uk1(new SVP(7));
-		unique_ptr<SVP> uk2(new SVP(777));
-		cout << "До: " << endl;
-		uk1->PrintV();
-		uk2->PrintV();
-		swap(uk1, uk2);
-		cout << "После: " << endl;
-		uk1->PrintV();
-		uk2->PrintV();
-		
+		int first = 19;
+	    int* one = &first;
+		int second = 25;
+	    int* two = &second;
+		cout << " Значение " << first << "\nУказатель на значение " << *one << endl;
+		cout << " Значение " << second << "\nУказатель на значение " << *two << endl;
+		Swap(&one, &two);
+		cout << " Значение " << first << "\nУказатель на значение " << *one << endl;
+		cout << " Значение " << second << "\nУказатель на значение " << *two << endl;
 	}
 
 	{
