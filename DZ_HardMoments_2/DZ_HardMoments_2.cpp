@@ -106,7 +106,7 @@ void count_If_Find()
 		return;
 	}
 
-    string vowels = "AEIOUYaeiouy";
+    string vowels = "AEIOUaeiou";
 
 	size_t count = count_if(std::istreambuf_iterator<char>(file), istreambuf_iterator<char>(), [=](char x) {return vowels.find(x) != string::npos; });
 	file.close();
@@ -129,7 +129,7 @@ void count_If_For()
 		return;
 	}
 
-	string vowels = "AEIOUYaeiouy";
+	string vowels = "AEIOUaeiou";
 
 	size_t count = count_if(std::istreambuf_iterator<char>(file), istreambuf_iterator<char>(), [=](char x) -> bool {for (auto chr : vowels) { if (chr == x) return true; } return false; });
 	file.close();
@@ -151,7 +151,7 @@ void count_For_Find()
 		return;
 	}
 
-	string vowels = "AEIOUYaeiouy";
+	string vowels = "AEIOUaeiou";
 	size_t count = 0;
 
 	for (auto it = istreambuf_iterator<char>(file); it != istreambuf_iterator<char>(); ++it)
@@ -194,7 +194,7 @@ void count_For_For()
 	auto finish = chrono::high_resolution_clock::now();
 	auto result = chrono::duration_cast<chrono::milliseconds>(finish - start);
 	cout << "(For + for) занял " << result.count() << " миллисекунд.\n";
-	cout << "Количество гласных: " << count << endl;
+	cout << "Считаем что Y глассная(так как иногда она ей может быть) Количество гласных: " << count << endl;
 }
 
 
